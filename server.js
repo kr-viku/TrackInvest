@@ -1,5 +1,6 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const PORT=process.env.PORT || 5000
 const MongoClient=mongoose.MongoClient
 const app=express()
 
@@ -21,7 +22,7 @@ app.post("/data", (req,res)=>{
 });
 })
 
-app.listen(8000, (err)=>{
+app.listen(PORT, (err)=>{
     if(!err){
         console.log("listen")
     }
