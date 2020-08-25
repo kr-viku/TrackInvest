@@ -1,5 +1,6 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const path=require('path')
 const PORT=process.env.PORT || 5000
 const MongoClient=mongoose.MongoClient
 const app=express()
@@ -9,9 +10,7 @@ const url = 'mongodb+srv://egnviku:db141528@cluster0-itvts.mongodb.net/TrackInve
 
 app.post("/data", (req,res)=>{
     var MongoClient = require('mongodb').MongoClient;
-
-
-    MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("TrackInvest");
   dbo.collection("trackinvest").find({}).toArray(function(err, result) {
@@ -22,8 +21,10 @@ app.post("/data", (req,res)=>{
 });
 })
 
-app.listen(PORT, (err)=>{
-    if(!err){
-        console.log("listen")
-    }
-})
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('myapp/build'))
+  app.get('*', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'myapp', 'build', 'index.html'))
+  })
+}
+app.listen(PORT, ()=> console.log("Server started"))
