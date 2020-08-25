@@ -35,10 +35,11 @@ function App() {
 
   return (
     <div className="App">
-     <table>
+      <h1>TrakInvest Assessment</h1>
+     <table className="center">
      <tr>
-	    <th><input type="text" value={nameFilter} onChange={e=>inputChanged(e,"name")}/></th>
-	    <th><input type="text" value={ageFilter} onChange={e=>inputChanged(e,"age")}/></th>
+	    <th><input type="text" placeholder="Name" value={nameFilter} onChange={e=>inputChanged(e,"name")}/></th>
+	    <th><input type="text" placeholder="Age" value={ageFilter} onChange={e=>inputChanged(e,"age")}/></th>
     </tr>
     {data.map(item =>{
       return (
