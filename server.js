@@ -5,7 +5,7 @@ const PORT=process.env.PORT || 5000
 const MongoClient=mongoose.MongoClient
 const app=express()
 
-const url = 'mongodb+srv://egnviku:db141528@cluster0-itvts.mongodb.net/TrackInvest?retryWrites=true&w=majority';
+const url = 'mongodb+srv://${process.env.USERName}:${process.env.PASSWORD}@cluster0-itvts.mongodb.net/TrackInvest?retryWrites=true&w=majority';
 
 
 app.post("/data", (req,res)=>{
