@@ -2,10 +2,12 @@ const express=require('express')
 const mongoose=require('mongoose')
 const path=require('path')
 const PORT=process.env.PORT || 5000
+const USERNAME=process.env.USERNAME
+const PASSWORD=process.env.PASSWORD
 const MongoClient=mongoose.MongoClient
 const app=express()
 
-const url = 'mongodb+srv://${process.env.USERName}:${process.env.PASSWORD}@cluster0-itvts.mongodb.net/TrackInvest?retryWrites=true&w=majority';
+const url = 'mongodb+srv://${USERNAME}:${PASSWORD}@cluster0-itvts.mongodb.net/TrackInvest?retryWrites=true&w=majority';
 
 
 app.post("/data", (req,res)=>{
